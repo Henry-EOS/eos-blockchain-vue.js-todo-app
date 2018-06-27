@@ -53,9 +53,14 @@ const STORAGE_KEY = "todo-storage";
 
 let contrat = null;
 
-const eos = Eos.Localnet({
+const eos = Eos({
+  chainId: config.eos.chainId,
   keyProvider: config.eos.keyProvider,
-  httpEndpoint: config.eos.httpEndpoint
+  httpEndpoint: config.eos.httpEndpoint,
+  expireInSeconds: 60,
+  broadcast: true,
+  debug: false, // set to true for debugging the transaction
+  sign: true
 });
 
 export default {
